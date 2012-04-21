@@ -35,6 +35,7 @@ class GameWindow < Gosu::Window
 
   def button_down(id)
     close if id == Gosu::KbEscape
+    @player.shoot if (id == Gosu::KbZ) || (id == Gosu::KbSpace)
   end
 
   def draw

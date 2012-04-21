@@ -1,3 +1,4 @@
+require 'chipmunk'
 require_relative 'player'
 
 class GameWindow < Gosu::Window
@@ -14,11 +15,18 @@ class GameWindow < Gosu::Window
     super 1024, 768, false
     self.caption = "The Two of Us"
 
-    @bg = Gosu::Image.new(self, Utils.image_url("background.png"), true)
+    space.damping = 0.8
+    space.gravity = CP::Vec2.new(0.0, 80.0)
+  end
+
+  def space
+    @space ||= CP::Space.new
   end
 
   def load_objects
-    @player = Player.new(self)
+    @bg = Gosu::Image.new(self, Utils.image_url("background.png"), true)
+
+    @player = Player.new
     @player.warp 400,400
   end
 
@@ -29,5 +37,11 @@ class GameWindow < Gosu::Window
   def draw
     @bg.draw(0,0,0)
     @player.draw
+  end
+
+  def update
+    6.times do
+      @space.step(1.0 / 60.0)
+    end
   end
 end

@@ -7,12 +7,15 @@ class Floor
     body = CP::StaticBody.new
     body.p = CP::Vec2.new(0.0, 0.0)
 
-    shape_array = [CP::Vec2.new(-10000.0, -1), CP::Vec2.new(-10000.0, 1), CP::Vec2.new(10000.0, 1), CP::Vec2.new(10000.0, -1)]
-    @shape = CP::Shape::Poly.new(body, shape_array, CP::Vec2.new(0,0))
+    @shape = CP::Shape::Segment.new(body, CP::Vec2.new(-10000.0, 0.0), CP::Vec2.new(10000.0, 0.0), 5)
     @shape.collision_type = :floor
     @shape.u = 1.0
 
     GameWindow.window.space.add_static_shape @shape
+  end
+
+  def shape
+    @shape
   end
 
   def warp(x,y)

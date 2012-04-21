@@ -1,4 +1,5 @@
 require_relative 'utils'
+require_relative 'bullet'
 
 class Player
   include CP::Object
@@ -33,9 +34,10 @@ class Player
   end
 
   def shoot
-    #return if @last_shot && Time.now - @last_shot < 0.3
-    #b = Bullet.new(@facing)
-    #b.warp(@shape.body.p.x + (@facing * 
+    return if @last_shot && Time.now - @last_shot < 0.3
+    b = Bullet.new(@facing)
+    b.warp(@shape.body.p.x + 0.1 + @facing * (WIDTH/2), @shape.body.p.y )
+    @last_shot = Time.now
   end
 
   def warp(x,y)

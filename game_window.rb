@@ -7,6 +7,10 @@ class GameWindow < Gosu::Window
     @@window ||= GameWindow.new
   end
 
+  def add_bullet(b)
+    @bullets << b
+  end
+
   def self.start
     window.load_objects
     window.show
@@ -16,6 +20,7 @@ class GameWindow < Gosu::Window
     super 1024, 768, false
     self.caption = "The Two of Us"
 
+    @bullets = []
     space.damping = 0.8
     space.gravity = CP::Vec2.new(0.0, 80.0)
   end
@@ -41,9 +46,13 @@ class GameWindow < Gosu::Window
   def draw
     @bg.draw(0,0,0)
     @player.draw
+    @bullets.each {|b| b.draw }
   end
 
   def update
+    # this is still leaving the shape and body in the space, however
+    @bullets.delete_if { |b| b.deletable? }
+
     6.times do
       @player.shape.body.reset_forces
       if button_down? Gosu::KbRight

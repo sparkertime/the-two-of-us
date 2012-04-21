@@ -4,7 +4,7 @@ class Player
   include CP::Object
   def initialize
     @image = Gosu::Image.new(GameWindow.window, Utils.image_url('player.png'), false)
-    body = CP::Body.new(10.0, 150.0)
+    body = CP::Body.new(10.0, CP::INFINITY)
     body.p = CP::Vec2.new(0.0, 0.0)
     body.v = CP::Vec2.new(0.0, 0.0)
     body.velocity_func do |body,g,damping,dt|

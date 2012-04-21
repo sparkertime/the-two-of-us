@@ -1,5 +1,6 @@
 require 'chipmunk'
 require_relative 'player'
+require_relative 'tile'
 
 class GameWindow < Gosu::Window
   def self.window
@@ -16,7 +17,7 @@ class GameWindow < Gosu::Window
     self.caption = "The Two of Us"
 
     space.damping = 0.8
-    space.gravity = CP::Vec2.new(0.0, 80.0)
+    space.gravity = CP::Vec2.new(0.0, 8.0)
   end
 
   def space
@@ -28,6 +29,8 @@ class GameWindow < Gosu::Window
 
     @player = Player.new
     @player.warp 400,400
+    @tile = Tile.new
+    @tile.warp 400,600
   end
 
   def button_down(id)
@@ -37,6 +40,7 @@ class GameWindow < Gosu::Window
   def draw
     @bg.draw(0,0,0)
     @player.draw
+    @tile.draw
   end
 
   def update

@@ -1,13 +1,14 @@
 require_relative 'utils'
 
 class Player
+  include CP::Object
   def initialize
     @image = Gosu::Image.new(GameWindow.window, Utils.image_url('player.png'), false)
     body = CP::Body.new(10.0, 150.0)
     body.p = CP::Vec2.new(0.0, 0.0)
     body.v = CP::Vec2.new(0.0, 0.0)
 
-    shape_array = [CP::Vec2.new(-7.0, -25.0), CP::Vec2.new(-7.0, 25.0), CP::Vec2.new(7.0, 25.0), CP::Vec2.new(7.0, -25.0)]
+    shape_array = [CP::Vec2.new(-7.0, -15.0), CP::Vec2.new(-7.0, 15.0), CP::Vec2.new(7.0, 15.0), CP::Vec2.new(7.0, -15.0)]
     @shape = CP::Shape::Poly.new(body, shape_array, CP::Vec2.new(0,0))
     @shape.collision_type = :player
 

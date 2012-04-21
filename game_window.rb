@@ -17,7 +17,7 @@ class GameWindow < Gosu::Window
     self.caption = "The Two of Us"
 
     space.damping = 0.8
-    space.gravity = CP::Vec2.new(0.0, 8.0)
+    space.gravity = CP::Vec2.new(0.0, 80.0)
   end
 
   def space
@@ -45,6 +45,16 @@ class GameWindow < Gosu::Window
 
   def update
     6.times do
+      @player.shape.body.reset_forces
+      if button_down? Gosu::KbRight
+        @player.go_right
+      end
+      if button_down? Gosu::KbLeft
+        @player.go_left
+      end
+      if button_down? Gosu::KbUp
+        @player.jump
+      end
       @space.step(1.0 / 60.0)
     end
   end

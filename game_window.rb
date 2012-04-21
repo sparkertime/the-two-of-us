@@ -1,6 +1,6 @@
 require 'chipmunk'
 require_relative 'player'
-require_relative 'tile'
+require_relative 'floor'
 
 class GameWindow < Gosu::Window
   def self.window
@@ -29,8 +29,8 @@ class GameWindow < Gosu::Window
 
     @player = Player.new
     @player.warp 400,400
-    @tile = Tile.new
-    @tile.warp 400,600
+    @floor = Floor.new
+    @floor.warp 400, 683
   end
 
   def button_down(id)
@@ -40,7 +40,6 @@ class GameWindow < Gosu::Window
   def draw
     @bg.draw(0,0,0)
     @player.draw
-    @tile.draw
   end
 
   def update

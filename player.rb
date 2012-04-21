@@ -30,13 +30,13 @@ class Player
   end
 
   def draw
-    @image.draw(@shape.body.p.x, @shape.body.p.y, 1)
+    @image.draw(@shape.body.p.x - WIDTH / 2.0, @shape.body.p.y - HEIGHT / 2.0, 1)
   end
 
   def shoot
     return if @last_shot && Time.now - @last_shot < 0.3
     b = Bullet.new(@facing)
-    b.warp(@shape.body.p.x + 0.1 + @facing * (WIDTH/2), @shape.body.p.y )
+    b.warp(@shape.body.p.x + 1.0 + @facing * (WIDTH/2), @shape.body.p.y - 8)
     @last_shot = Time.now
   end
 
@@ -63,7 +63,7 @@ class Player
   end
 
   def jump
-    return if @last_jump && Time.now - @last_jump < 0.5
+    return if @last_jump && Time.now - @last_jump < 0.75
     @shape.body.apply_force(CP::Vec2.new(0.0,-100000.0), CP::Vec2.new(0.0,0.0))
     @last_jump = Time.now
   end

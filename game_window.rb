@@ -35,7 +35,7 @@ class GameWindow < Gosu::Window
     @player = Player.new
     @player.warp 400,400
     @floor = Floor.new
-    @floor.warp 400, 683
+    @floor.warp 400, 700
   end
 
   def button_down(id)

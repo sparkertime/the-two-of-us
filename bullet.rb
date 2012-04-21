@@ -1,9 +1,9 @@
 class Bullet
   include CP::Object
 
-  WIDTH = 3.0
-  HEIGHT = 1.0
-  VELOCITY = 30.0
+  WIDTH = 9.0
+  HEIGHT = 3.0
+  VELOCITY = 300.0
 
   def initialize(direction)
     @created_at = Time.now
@@ -30,7 +30,7 @@ class Bullet
   end
 
   def draw
-    @image.draw(@shape.body.p.x, @shape.body.p.y, 1)
+    @image.draw(@shape.body.p.x - WIDTH / 2.0, @shape.body.p.y - HEIGHT / 2.0, 1)
   end
 
   def warp(x,y)

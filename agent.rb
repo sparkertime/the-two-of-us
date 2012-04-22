@@ -10,6 +10,7 @@ class Agent
   def initialize
     @image = Gosu::Image.new(GameWindow.window, Utils.image_url('agent.png'), true)
     @facing = 1
+    @living = true
     body = CP::Body.new(10.0, CP.moment_for_box(10.0, WIDTH, HEIGHT))
     body.p = CP::Vec2.new(0.0, 0.0)
     body.v = CP::Vec2.new(0.0, 0.0)
@@ -23,6 +24,7 @@ class Agent
     @shape = CP::Shape::Poly.new(body, shape_array, CP::Vec2.new(0,0))
     @shape.collision_type = :foe
     @shape.u = 0.30
+    @shape.object = self
 
     GameWindow.window.space.add_body body
     GameWindow.window.space.add_shape @shape
@@ -61,5 +63,10 @@ class Agent
     return if @last_jump && Time.now - @last_jump < 0.5
     @shape.body.apply_force(CP::Vec2.new(0.0,-100000.0), CP::Vec2.new(0.0,0.0))
     @last_jump = Time.now
+  end
+
+  def kill
+    @living = false
+    @image = Gosu::Image.new(GameWindow.window, Utils.image_url('agent_dead.png'), true)
   end
 end

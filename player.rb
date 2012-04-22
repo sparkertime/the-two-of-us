@@ -26,6 +26,7 @@ class Player
     @shape = CP::Shape::Poly.new(body, shape_array, CP::Vec2.new(0,0))
     @shape.collision_type = :player
     @shape.u = 0.30
+    @shape.object = self
 
     GameWindow.window.space.add_body body
     GameWindow.window.space.add_shape @shape
@@ -38,7 +39,7 @@ class Player
   def shoot
     return if @last_shot && Time.now - @last_shot < 0.3
     b = Bullet.new(@facing)
-    b.warp CP::Vec2.new(@shape.body.p.x + 1.0 + @facing * (WIDTH/2), @shape.body.p.y - 6)
+    b.warp CP::Vec2.new(@shape.body.p.x + @facing * ( 2.0 + WIDTH/2), @shape.body.p.y - 6)
     @last_shot = Time.now
   end
 
@@ -65,4 +66,12 @@ class Player
     @shape.body.apply_force(CP::Vec2.new(0.0,-100000.0), CP::Vec2.new(0.0,0.0))
     @last_jump = Time.now
   end
+
+  def kill
+    puts "###################"
+    puts " YOU HAVE PERISHED"
+    puts "###################"
+    exit
+  end
+
 end

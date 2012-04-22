@@ -30,16 +30,22 @@ class GameWindow < Gosu::Window
   end
 
   def space
-    @space ||= CP::Space.new
+    return @space if @space
+    @space = CP::Space.new
+    @space.add_collision_func(:foe, :bullet) do |foe, _|
+      foe.object.kill
+      true
+    end
+    @space.add_collision_func(:player, :bullet) do |player, _|
+      player.object.kill
+      true
+    end
+    @space
   end
 
   def load_objects
     @bg = Gosu::Image.new(self, Utils.image_url("background.png"), true)
 
-    #@player = Player.new
-    #@player.warp 400,670
-    #@agent = Agent.new
-    #@agent.warp 800,670
     @floor = Floor.new
     @floor.warp CP::Vec2.new(400, 700)
     @map = Map.from_file 'map.txt'
@@ -54,8 +60,6 @@ class GameWindow < Gosu::Window
   def draw
     translate(@translate_x, 0) do
       @bg.draw(0,0,0)
-      #@player.draw
-      #@agent.draw
       @map.objects.each {|o| o.draw }
       @bullets.each {|b| b.draw }
     end
@@ -63,7 +67,7 @@ class GameWindow < Gosu::Window
 
   def update
     @bullets.delete_if { |b| b.deletable? }
-    #@translate_x -= 1
+    #@translate_x -= 2.5
 
     6.times do
       @player.shape.body.reset_forces

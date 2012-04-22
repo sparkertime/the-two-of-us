@@ -69,6 +69,8 @@ class GameWindow < Gosu::Window
   def draw
     translate(@translate_x, 0) do
       @bg.draw(0,0,0)
+      @bg.draw(1024,0,0)
+      @bg.draw(2048,0,0)
       @map.objects.each {|o| o.draw }
       @bullets.each {|b| b.draw }
     end

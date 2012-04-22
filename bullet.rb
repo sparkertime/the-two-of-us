@@ -1,12 +1,15 @@
 class Bullet
   include CP::Object
 
+  attr_accessor :shooter
+
   WIDTH = 9.0
   HEIGHT = 3.0
   VELOCITY = 300.0
 
-  def initialize(direction)
+  def initialize(shooter, direction)
     @created_at = Time.now
+    @shooter = shooter
 
     @image = Gosu::Image.new(GameWindow.window, Utils.image_url('bullet.png'), false)
     body = CP::Body.new(0.5, CP.moment_for_box(0.5, WIDTH, HEIGHT))
@@ -19,6 +22,7 @@ class Bullet
 
     @shape = CP::Shape::Segment.new(body, CP::Vec2.new(0.0 - WIDTH / 2.0, 0.0), CP::Vec2.new(0.0 + WIDTH / 2.0, 0.0), 1)
     @shape.collision_type = :bullet
+    @shape.object = self
 
     GameWindow.window.space.add_body body
     GameWindow.window.space.add_shape @shape

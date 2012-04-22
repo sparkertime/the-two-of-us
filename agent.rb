@@ -9,7 +9,7 @@ class Agent
 
   def initialize
     @image = Gosu::Image.new(GameWindow.window, Utils.image_url('agent.png'), true)
-    @facing = 1
+    @facing = -1
     @living = true
     body = CP::Body.new(10.0, CP.moment_for_box(10.0, WIDTH, HEIGHT))
     body.p = CP::Vec2.new(0.0, 0.0)
@@ -35,9 +35,9 @@ class Agent
   end
 
   def shoot
-    return if @last_shot && Time.now - @last_shot < 2
-    b = Bullet.new(@facing)
-    b.warp(@shape.body.p.x + 1.0 + @facing * (WIDTH/2), @shape.body.p.y - 8)
+    return if @last_shot && Time.now - @last_shot < 0.3
+    b = Bullet.new(self, @facing)
+    b.warp CP::Vec2.new(@shape.body.p.x + @facing * ( 2.0 + WIDTH/2), @shape.body.p.y - 6)
     @last_shot = Time.now
   end
 
@@ -72,5 +72,10 @@ class Agent
 
   def living?
     @living
+  end
+
+  def update
+    @shape.body.reset_forces
+    shoot if living? && rand(1000) < 2
   end
 end

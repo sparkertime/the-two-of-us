@@ -3,20 +3,21 @@ require_relative 'player'
 require_relative 'agent'
 require_relative 'floor'
 require_relative 'tile'
+require_relative 'goal'
 require_relative 'map'
 
 class GameWindow < Gosu::Window
+  def self.start
+    window.load_objects
+    window.show
+  end
+
   def self.window
     @@window ||= GameWindow.new
   end
 
   def add_bullet(b)
     @bullets << b
-  end
-
-  def self.start
-    window.load_objects
-    window.show
   end
 
   def initialize
@@ -36,12 +37,16 @@ class GameWindow < Gosu::Window
       foe.object.kill
       true
     end
-    @space.add_collision_func(:player, :bullet) do |player, _|
-      player.object.kill
+    @space.add_collision_func(:player, :bullet) do |player, bullet|
+      player.object.kill('bullet') unless bullet.object.shooter == player.object
       true
     end
     @space.add_collision_func(:player, :foe) do |player, foe|
-      player.object.kill if foe.object.living?
+      player.object.kill('touching') if foe.object.living?
+      true
+    end
+    @space.add_collision_func(:player, :goal) do |player, goal|
+      player.object.win('winning')
       true
     end
     @space
@@ -71,10 +76,10 @@ class GameWindow < Gosu::Window
 
   def update
     @bullets.delete_if { |b| b.deletable? }
-    #@translate_x -= 2.5
+    @translate_x -= 2.5
 
     6.times do
-      @player.shape.body.reset_forces
+      @map.objects.each {|o| o.update }
       if button_down? Gosu::KbRight
         @player.go_right
       end

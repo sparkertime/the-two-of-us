@@ -29,6 +29,8 @@ class Map
           obj = Agent.new
         when '#'
           obj = Tile.new
+        when 'g'
+          obj = Goal.new
         end
         if obj
           obj.warp block_to_world_coord(x,y)

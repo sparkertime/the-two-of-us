@@ -38,7 +38,7 @@ class Player
 
   def shoot
     return if @last_shot && Time.now - @last_shot < 0.3
-    b = Bullet.new(@facing)
+    b = Bullet.new(self, @facing)
     b.warp CP::Vec2.new(@shape.body.p.x + @facing * ( 2.0 + WIDTH/2), @shape.body.p.y - 6)
     @last_shot = Time.now
   end
@@ -67,11 +67,21 @@ class Player
     @last_jump = Time.now
   end
 
-  def kill
-    puts "###################"
-    puts " YOU HAVE PERISHED"
-    puts "###################"
+  def kill(reason)
+    puts "#####################################"
+    puts " YOU HAVE PERISHED (cause: #{reason})"
+    puts "#####################################"
     exit
   end
 
+  def win(reason)
+    puts "#######################################"
+    puts " YOU HAVE VICTORIED! (cause: #{reason})"
+    puts "#######################################"
+    exit
+  end
+
+  def update
+    @shape.body.reset_forces
+  end
 end

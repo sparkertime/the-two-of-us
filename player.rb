@@ -63,7 +63,7 @@ class Player
   end
 
   def jump
-    return if @last_jump && Time.now - @last_jump < 0.75
+    return if @last_jump && Time.now - @last_jump < 0.5
     @shape.body.apply_force(CP::Vec2.new(0.0,-100000.0), CP::Vec2.new(0.0,0.0))
     @last_jump = Time.now
   end

@@ -22,6 +22,7 @@ class GameWindow < Gosu::Window
     self.caption = "The Two of Us"
 
     @bullets = []
+    @translate_x = 0
     space.damping = 0.8
     space.gravity = CP::Vec2.new(0.0, 80.0)
   end
@@ -47,14 +48,17 @@ class GameWindow < Gosu::Window
   end
 
   def draw
-    @bg.draw(0,0,0)
-    @player.draw
-    @agent.draw
-    @bullets.each {|b| b.draw }
+    translate(@translate_x, 0) do
+      @bg.draw(0,0,0)
+      @player.draw
+      @agent.draw
+      @bullets.each {|b| b.draw }
+    end
   end
 
   def update
     @bullets.delete_if { |b| b.deletable? }
+    @translate_x -= 1
 
     6.times do
       @player.shape.body.reset_forces

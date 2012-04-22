@@ -3,6 +3,8 @@ require_relative 'bullet'
 
 class Player
   include CP::Object
+  
+  attr_reader :shape
 
   WIDTH = 13.0
   HEIGHT = 30.0
@@ -36,16 +38,12 @@ class Player
   def shoot
     return if @last_shot && Time.now - @last_shot < 0.3
     b = Bullet.new(@facing)
-    b.warp(@shape.body.p.x + 1.0 + @facing * (WIDTH/2), @shape.body.p.y - 6)
+    b.warp CP::Vec2.new(@shape.body.p.x + 1.0 + @facing * (WIDTH/2), @shape.body.p.y - 6)
     @last_shot = Time.now
   end
 
-  def warp(x,y)
-    @shape.body.p = CP::Vec2.new(x,y)
-  end
-
-  def shape
-    @shape
+  def warp(pos)
+    @shape.body.p = pos
   end
 
   def go_right

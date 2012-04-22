@@ -18,8 +18,8 @@ class Floor
     @shape
   end
 
-  def warp(x,y)
-    @shape.body.p = CP::Vec2.new(x,y)
-    GameWindow.window.space.rehash_static
+  def warp(pos)
+    @shape.body.p = pos
+    GameWindow.window.space.rehash_shape(@shape)
   end
 end

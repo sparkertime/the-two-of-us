@@ -2,6 +2,7 @@ require 'chipmunk'
 require_relative 'player'
 require_relative 'agent'
 require_relative 'floor'
+require_relative 'map'
 
 class GameWindow < Gosu::Window
   def self.window
@@ -18,7 +19,7 @@ class GameWindow < Gosu::Window
   end
 
   def initialize
-    super 1024, 768, false
+    super Map::WIDTH.round, Map::HEIGHT.round, false
     self.caption = "The Two of Us"
 
     @bullets = []
@@ -34,12 +35,14 @@ class GameWindow < Gosu::Window
   def load_objects
     @bg = Gosu::Image.new(self, Utils.image_url("background.png"), true)
 
-    @player = Player.new
-    @player.warp 400,670
-    @agent = Agent.new
-    @agent.warp 800,670
+    #@player = Player.new
+    #@player.warp 400,670
+    #@agent = Agent.new
+    #@agent.warp 800,670
     @floor = Floor.new
-    @floor.warp 400, 700
+    @floor.warp CP::Vec2.new(400, 700)
+    @map = Map.from_file 'map.txt'
+    @player = @map.objects.reject {|o| o.class != Player }.first
   end
 
   def button_down(id)
@@ -50,15 +53,16 @@ class GameWindow < Gosu::Window
   def draw
     translate(@translate_x, 0) do
       @bg.draw(0,0,0)
-      @player.draw
-      @agent.draw
+      #@player.draw
+      #@agent.draw
+      @map.objects.each {|o| o.draw }
       @bullets.each {|b| b.draw }
     end
   end
 
   def update
     @bullets.delete_if { |b| b.deletable? }
-    @translate_x -= 1
+    #@translate_x -= 1
 
     6.times do
       @player.shape.body.reset_forces

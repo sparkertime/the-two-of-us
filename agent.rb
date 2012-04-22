@@ -1,6 +1,8 @@
 class Agent
   include CP::Object
 
+  attr_reader :shape
+
   WIDTH = 10.0
   HEIGHT = 30.0
   WALKING_FORCE = 400.0
@@ -37,12 +39,8 @@ class Agent
     @last_shot = Time.now
   end
 
-  def warp(x,y)
-    @shape.body.p = CP::Vec2.new(x,y)
-  end
-
-  def shape
-    @shape
+  def warp(pos)
+    @shape.body.p = pos
   end
 
   def go_right

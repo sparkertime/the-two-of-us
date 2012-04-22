@@ -37,7 +37,7 @@ class Bullet
     @image.draw(@shape.body.p.x - WIDTH / 2.0, @shape.body.p.y - HEIGHT / 2.0, 1)
   end
 
-  def warp(x,y)
-    @shape.body.p = CP::Vec2.new(x,y)
+  def warp(pos)
+    @shape.body.p = pos
   end
 end

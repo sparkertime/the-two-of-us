@@ -2,6 +2,7 @@ require 'chipmunk'
 require_relative 'player'
 require_relative 'agent'
 require_relative 'floor'
+require_relative 'tile'
 require_relative 'map'
 
 class GameWindow < Gosu::Window

@@ -1,6 +1,7 @@
 class Map
   HEIGHT = 768.0
   WIDTH = 1024.0
+  BLOCK_SIZE = 40.0
 
   attr_accessor :objects
 
@@ -26,8 +27,8 @@ class Map
           obj = Player.new
         when 'e'
           obj = Agent.new
-        #when '#'
-          #obj = Tile.new
+        when '#'
+          obj = Tile.new
         end
         if obj
           obj.warp block_to_world_coord(x,y)
@@ -39,6 +40,6 @@ class Map
   end
 
   def block_to_world_coord(x,y)
-    CP::Vec2.new(@block_width * x, @block_height * y)
+    CP::Vec2.new(BLOCK_SIZE * x, BLOCK_SIZE * y)
   end
 end

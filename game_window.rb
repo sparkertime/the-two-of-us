@@ -1,5 +1,6 @@
 require 'chipmunk'
 require_relative 'player'
+require_relative 'agent'
 require_relative 'floor'
 
 class GameWindow < Gosu::Window
@@ -33,7 +34,9 @@ class GameWindow < Gosu::Window
     @bg = Gosu::Image.new(self, Utils.image_url("background.png"), true)
 
     @player = Player.new
-    @player.warp 400,400
+    @player.warp 400,670
+    @agent = Agent.new
+    @agent.warp 800,670
     @floor = Floor.new
     @floor.warp 400, 700
   end
@@ -46,11 +49,11 @@ class GameWindow < Gosu::Window
   def draw
     @bg.draw(0,0,0)
     @player.draw
+    @agent.draw
     @bullets.each {|b| b.draw }
   end
 
   def update
-    # this is still leaving the shape and body in the space, however
     @bullets.delete_if { |b| b.deletable? }
 
     6.times do

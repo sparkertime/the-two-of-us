@@ -25,8 +25,12 @@ class Bullet
     GameWindow.window.add_bullet self
   end
 
+  # ewww, side effect-tastic. basically a violation of everything I hold dear.
   def deletable?
-    Time.now - @created_at > 2
+    return unless Time.now - @created_at > 2
+    GameWindow.window.space.remove_body @shape.body
+    GameWindow.window.space.remove_shape @shape
+    true
   end
 
   def draw

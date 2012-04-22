@@ -27,9 +27,7 @@ class Agent
   end
 
   def draw
-    puts @shape.body.a
-    @image.draw_rot(@shape.body.p.x, @shape.body.p.y, 1, @shape.body.a.radians_to_gosu - 90.0)
-    #@image.draw(@shape.body.p.x - WIDTH / 2.0, @shape.body.p.y - HEIGHT / 2.0, 1)
+    @image.draw_rot(@shape.body.p.x, @shape.body.p.y, 1, @shape.body.a.radians_to_degrees)
   end
 
   def shoot

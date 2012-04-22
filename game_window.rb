@@ -40,6 +40,10 @@ class GameWindow < Gosu::Window
       player.object.kill
       true
     end
+    @space.add_collision_func(:player, :foe) do |player, foe|
+      player.object.kill if foe.object.living?
+      true
+    end
     @space
   end
 

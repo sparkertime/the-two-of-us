@@ -69,4 +69,8 @@ class Agent
     @living = false
     @image = Gosu::Image.new(GameWindow.window, Utils.image_url('agent_dead.png'), true)
   end
+
+  def living?
+    @living
+  end
 end

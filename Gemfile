@@ -1,4 +1,5 @@
 source :rubygems
 
-gem "gosu"
+gem "gosu", "0.7.41"
 gem "chipmunk"
+gem "releasy"

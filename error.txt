@@ -1,0 +1,77 @@
+** Invoke build:osx (first_time)
+** Invoke build:osx:app (first_time)
+** Invoke pkg/the_two_of_us_0_0_1_OSX (first_time)
+** Invoke assets/agent.png (first_time, not_needed)
+** Invoke assets/agent_dead.png (first_time, not_needed)
+** Invoke assets/background.png (first_time, not_needed)
+** Invoke assets/bullet.png (first_time, not_needed)
+** Invoke assets/game.icns (first_time, not_needed)
+** Invoke assets/goal.png (first_time, not_needed)
+** Invoke assets/map.txt (first_time, not_needed)
+** Invoke assets/masters/background.pxd (first_time, not_needed)
+** Invoke assets/player.png (first_time, not_needed)
+** Invoke assets/tile.png (first_time, not_needed)
+** Invoke lib/agent.rb (first_time, not_needed)
+** Invoke lib/bullet.rb (first_time, not_needed)
+** Invoke lib/floor.rb (first_time, not_needed)
+** Invoke lib/game_window.rb (first_time, not_needed)
+** Invoke lib/goal.rb (first_time, not_needed)
+** Invoke lib/map.rb (first_time, not_needed)
+** Invoke lib/player.rb (first_time, not_needed)
+** Invoke lib/tile.rb (first_time, not_needed)
+** Invoke lib/utils.rb (first_time, not_needed)
+** Invoke bin/main.rb (first_time, not_needed)
+** Invoke wrappers/gosu-mac-wrapper-0.7.41.tar.gz (first_time, not_needed)
+** Execute pkg/the_two_of_us_0_0_1_OSX
+rake aborted!
+No such file or directory - pkg/the_two_of_us_0_0_1_OSX/The Two of Us.app/Contents/Resources/lib/chingu
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:1406:in `unlink'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:1406:in `block in remove_file'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:1411:in `platform_support'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:1405:in `remove_file'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:1394:in `remove'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:770:in `block in remove_entry'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:1448:in `postorder_traverse'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:768:in `remove_entry'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:626:in `block in rm_r'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:622:in `each'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/fileutils.rb:622:in `rm_r'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/file_utils_ext.rb:39:in `rm_r'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@thetwoofus/gems/releasy-0.2.2/lib/releasy/builders/osx_app.rb:144:in `block in remove_gems'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@thetwoofus/gems/releasy-0.2.2/lib/releasy/builders/osx_app.rb:143:in `each'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@thetwoofus/gems/releasy-0.2.2/lib/releasy/builders/osx_app.rb:143:in `remove_gems'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@thetwoofus/gems/releasy-0.2.2/lib/releasy/builders/osx_app.rb:94:in `build'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@thetwoofus/gems/releasy-0.2.2/lib/releasy/builders/osx_app.rb:69:in `block in generate_tasks'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:205:in `call'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:205:in `block in execute'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:200:in `each'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:200:in `execute'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:158:in `block in invoke_with_call_chain'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:151:in `invoke_with_call_chain'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:176:in `block in invoke_prerequisites'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:174:in `each'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:174:in `invoke_prerequisites'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:157:in `block in invoke_with_call_chain'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:151:in `invoke_with_call_chain'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:176:in `block in invoke_prerequisites'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:174:in `each'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:174:in `invoke_prerequisites'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:157:in `block in invoke_with_call_chain'
+/Users/sparker/.rvm/rubies/ruby-1.9.3-p0/lib/ruby/1.9.1/monitor.rb:211:in `mon_synchronize'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:151:in `invoke_with_call_chain'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/task.rb:144:in `invoke'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:116:in `invoke_task'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:94:in `block (2 levels) in top_level'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:94:in `each'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:94:in `block in top_level'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:133:in `standard_exception_handling'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:88:in `top_level'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:66:in `block in run'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:133:in `standard_exception_handling'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/lib/rake/application.rb:63:in `run'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/gems/rake-0.9.2.2/bin/rake:33:in `<top (required)>'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/bin/rake:19:in `load'
+/Users/sparker/.rvm/gems/ruby-1.9.3-p0@global/bin/rake:19:in `<main>'
+Tasks: TOP => build:osx => build:osx:app => pkg/the_two_of_us_0_0_1_OSX
